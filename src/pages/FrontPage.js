@@ -101,10 +101,12 @@ const FrontPage = () => {
             if (x.match(string))
               return (
                 <p key={x + i} className='message'>
-                  <Linkify>{x}</Linkify>
+                  <Linkify>{x}</Linkify>}
                   <button
-                    className='small-btn'
-                    onClick={() => setCollection([...collection, x])}
+                    onClick={() => {
+                      setCollection([...collection, x])
+                    }}
+                    className={`small-btn`}
                   >
                     +
                   </button>
@@ -116,12 +118,18 @@ const FrontPage = () => {
     )
   }
   const Collection = () => {
+    const string = new RegExp(search, 'i')
+
+    const downloadText = () =>
+      download(String(collection.join('\n')), 'collection.txt')
+
     return (
       <div>
-        {collection.map((x) => (
-          <p>{x}</p>
-        ))}
-        {download(String(collection.join('\n')), 'collection.txt')}
+        {collection.map((x) => {
+          if (x.match(string)) return <p>{x}</p>
+          return ''
+        })}
+        <button onClick={() => downloadText()}>Download</button>
       </div>
     )
   }
