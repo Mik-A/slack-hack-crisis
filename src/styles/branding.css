@@ -108,3 +108,13 @@ input[type='text'] {
 input.bg-grey {
   border: 6px solid var(--color-grey);
 }
+
+button.small-btn {
+  display: none;
+}
+p.message:hover > button.small-btn {
+  padding: 0.3rem;
+  background-color: var(--color-grey);
+  border-radius: 0;
+  display: inline-block;
+}

@@ -17,9 +17,7 @@ const FrontPage = () => {
     activeBtn: false
   })
   const [search, setSearch] = useState('')
-  const [collection, setCollection] = useState(
-    'No texts collected. Add to collection by clicking the + button on prefered paragraph'
-  )
+  const [collection, setCollection] = useState(['Collection: '])
 
   const handleSearch = (e) => setSearch(e.target.value)
 
@@ -91,7 +89,6 @@ const FrontPage = () => {
           collected: null,
           activeBtn: channel
         })
-        // download(json.encoded, 'encoded.txt')
       })
   }
 
@@ -103,8 +100,14 @@ const FrontPage = () => {
           data.textsOnlyArr.map((x, i) => {
             if (x.match(string))
               return (
-                <p key={x + i}>
+                <p key={x + i} className='message'>
                   <Linkify>{x}</Linkify>
+                  <button
+                    className='small-btn'
+                    onClick={() => setCollection([...collection, x])}
+                  >
+                    +
+                  </button>
                 </p>
               )
             return ''
@@ -113,7 +116,14 @@ const FrontPage = () => {
     )
   }
   const Collection = () => {
-    return <div>{collection}</div>
+    return (
+      <div>
+        {collection.map((x) => (
+          <p>{x}</p>
+        ))}
+        {download(String(collection.join('\n')), 'collection.txt')}
+      </div>
+    )
   }
   return (
     <>
