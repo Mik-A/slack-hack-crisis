@@ -13,6 +13,9 @@ const FrontPage = () => {
     textsOnlyArr: [],
     listChannels: []
   })
+  const [search, setSearch] = useState('')
+
+  const handleSearch = (e) => setSearch(e.target.value)
 
   useEffect(() => {
     setData({ loading: true, listChannels: [] })
@@ -71,16 +74,37 @@ const FrontPage = () => {
         // download(json.encoded, 'encoded.txt')
       })
   }
-  return (
-    <article className='main'>
-      <ShowChannels />
-      {data.loading ? 'Loading...' : ''}
-      <p></p>
+
+  const View = () => {
+    const string = new RegExp(search, 'i')
+    return (
       <section className='preview'>
         {data.textsOnlyArr &&
-          data.textsOnlyArr.map((x, i) => <p key={x + '-i'}>{x}</p>)}
+          data.textsOnlyArr.map((x, i) => {
+            if (x.match(string)) return <p key={x + i}>{x}</p>
+            return ''
+          })}
       </section>
-    </article>
+    )
+  }
+
+  return (
+    <>
+      <div className='fixed-right'>
+        <input
+          type='text'
+          placeholder='search'
+          value={search}
+          onChange={handleSearch}
+        />
+      </div>
+      <article className='main'>
+        <ShowChannels />
+        {data.loading ? 'Loading...' : ''}
+        <p></p>
+        <View />
+      </article>
+    </>
   )
 }
 

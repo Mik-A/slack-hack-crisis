@@ -26,3 +26,8 @@ article {
 .preview {
   width: 300px;
 }
+.fixed-right {
+  display: flex;
+  justify-content: right;
+  margin-right: 4rem;
+}

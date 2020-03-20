@@ -55,7 +55,7 @@ input[type='text'] {
   /* width: 100%;   */
   font-weight: 400;
   border: 0px none;
-  padding: 14px 0;
+  padding: 14px 1rem;
   font-size: 1rem;
   border-radius: 3px;
 }
