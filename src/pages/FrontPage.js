@@ -122,7 +122,7 @@ const FrontPage = () => {
 
     const downloadText = () =>
       download(String(collection.join('\n')), 'collection.txt')
-
+    console.log('collection', collection)
     return (
       <div>
         {collection.map((x) => {
