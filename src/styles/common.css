@@ -1,0 +1,28 @@
+article {
+  width: 100%;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid-center {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.main {
+  padding: 2rem 10rem;
+  max-width: 1260px;
+  margin: 0 auto;
+  color: var(--color-paragraph);
+}
+.grid-2-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  align-items: center;
+}
+.preview {
+  width: 300px;
+}
