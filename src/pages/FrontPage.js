@@ -12,9 +12,14 @@ const FrontPage = () => {
     msg: '',
     fileName: 'no file uploaded',
     textsOnlyArr: [],
-    listChannels: []
+    listChannels: [],
+    collected: null,
+    activeBtn: false
   })
   const [search, setSearch] = useState('')
+  const [collection, setCollection] = useState(
+    'No texts collected. Add to collection by clicking the + button on prefered paragraph'
+  )
 
   const handleSearch = (e) => setSearch(e.target.value)
 
@@ -28,15 +33,26 @@ const FrontPage = () => {
         setData({ loading: false, listChannels: json.list.channels || [] })
       })
   }, [])
-
   const ShowChannels = () => {
     return (
       <>
-        <input type='button' value='Collection' />
+        <input
+          className={data.activeBtn == 'Collection' ? 'bg-grey' : ''}
+          type='button'
+          value='Collection'
+          onClick={() => {
+            setData({
+              collected: true,
+              listChannels: [...data.listChannels],
+              activeBtn: 'Collection'
+            })
+          }}
+        />
         {data.listChannels &&
           data.listChannels.map((x, i) => (
             <input
               type='button'
+              className={data.activeBtn === x.id ? 'bg-grey' : ''}
               onClick={handleApiCall('getMessages')}
               value={x.name}
               id={x.id}
@@ -49,9 +65,11 @@ const FrontPage = () => {
 
   const handleApiCall = (api) => (e) => {
     e.preventDefault()
-    console.log('e.target', e.target)
-    setData({ loading: true })
     const channel = e.target.id
+    setData({
+      loading: true,
+      listChannels: [...data.listChannels]
+    })
     fetch('/.netlify/functions/' + api, {
       method: 'post',
       headers: {
@@ -65,12 +83,13 @@ const FrontPage = () => {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log('json', json)
         setData({
           loading: false,
           msg: json.msg,
           textsOnlyArr: json.textsOnlyArr,
-          listChannels: [...data.listChannels]
+          listChannels: [...data.listChannels],
+          collected: null,
+          activeBtn: channel
         })
         // download(json.encoded, 'encoded.txt')
       })
@@ -93,7 +112,9 @@ const FrontPage = () => {
       </section>
     )
   }
-
+  const Collection = () => {
+    return <div>{collection}</div>
+  }
   return (
     <>
       <div className='fixed-right'>
@@ -108,7 +129,7 @@ const FrontPage = () => {
         <ShowChannels />
         {data.loading ? 'Loading...' : ''}
         <p></p>
-        <View />
+        {data.collected ? <Collection /> : <View />}
       </article>
     </>
   )

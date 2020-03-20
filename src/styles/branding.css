@@ -44,7 +44,7 @@ input[type='submit'],
   color: var(--color-white);
   font-weight: bold;
   cursor: pointer;
-  border: 2px solid rgb(255, 169, 211);
+  border: 2px solid var(--color-white);
   font-size: 0.8rem;
   padding: 0.5rem 2rem;
 }
@@ -103,4 +103,8 @@ input[type='text'] {
   color: var(--color-jade-light);
   border: 2px solid transparent;
   box-shadow: none;
+}
+
+input.bg-grey {
+  border: 6px solid var(--color-grey);
 }

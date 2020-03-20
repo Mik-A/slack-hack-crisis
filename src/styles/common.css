@@ -24,7 +24,8 @@ article {
   align-items: center;
 }
 .preview {
-  width: 300px;
+  width: 500px;
+  margin: 2rem auto;
 }
 .fixed-right {
   display: flex;

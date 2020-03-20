@@ -2,15 +2,10 @@
   --color-surface: #fbf7ef;
   --color-solid: black;
   --color-white: white;
+  --color-grey: #a8a6a1;
   --color-paragraph: rgb(0, 0, 0);
   --color-primary: teal;
-  /* --color-silvertree-dark: rgba(4, 3, 3, 1);
-  --color-silvertree-medium: rgba(4, 3, 3, 0.8);
-  --color-silvertree-light: rgba(4, 3, 3, 0.5); */
   --color-brand-orange: #d55227;
-  /* --color-jade-dark: rgba(190, 239, 158, 1);
-  --color-jade-medium: rgba(190, 239, 158, 0.8);
-  --color-jade-light: rgba(190, 239, 158, 0.5); */
   --color-oracle-light: rgba(92, 51, 71, 1);
 }
 
