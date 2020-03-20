@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState, Fragment } from 'react'
 import download from 'in-browser-download'
+import Linkify from 'react-linkify'
 
 import '../styles/branding.css'
 import '../styles/common.css'
@@ -81,7 +82,12 @@ const FrontPage = () => {
       <section className='preview'>
         {data.textsOnlyArr &&
           data.textsOnlyArr.map((x, i) => {
-            if (x.match(string)) return <p key={x + i}>{x}</p>
+            if (x.match(string))
+              return (
+                <p key={x + i}>
+                  <Linkify>{x}</Linkify>
+                </p>
+              )
             return ''
           })}
       </section>
