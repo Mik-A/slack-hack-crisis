@@ -17,7 +17,7 @@ const FrontPage = () => {
     activeBtn: false
   })
   const [search, setSearch] = useState('')
-  const [collection, setCollection] = useState(['Collection: '])
+  const [collection, setCollection] = useState(['(Editable) Collection: '])
 
   const handleSearch = (e) => setSearch(e.target.value)
 
