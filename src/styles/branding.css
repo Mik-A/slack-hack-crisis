@@ -112,9 +112,18 @@ input.bg-grey {
 button.small-btn {
   display: none;
 }
+p.message:hover {
+  background-color: var(--color-grey);
+}
 p.message:hover > button.small-btn {
   padding: 0.3rem;
   background-color: var(--color-grey);
   border-radius: 0;
   display: inline-block;
+}
+button.small-btn {
+  margin: 1px 0.5rem;
+}
+button.small-btn + span {
+  color: var(--color-white);
 }

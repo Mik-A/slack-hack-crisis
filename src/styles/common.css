@@ -12,8 +12,9 @@ article {
   align-content: center;
 }
 .main {
-  padding: 2rem 10rem;
+  padding: 2rem 1vw;
   max-width: 1260px;
+  width: 100vw;
   margin: 0 auto;
   color: var(--color-paragraph);
   white-space: pre-wrap;
@@ -31,5 +32,5 @@ article {
 .fixed-right {
   display: flex;
   justify-content: right;
-  margin-right: 4rem;
+  margin-right: 2vw;
 }

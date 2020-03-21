@@ -101,7 +101,7 @@ const FrontPage = () => {
             if (x.match(string))
               return (
                 <p key={x + i} className='message'>
-                  <Linkify>{x}</Linkify>}
+                  <Linkify>{x}</Linkify>
                   <button
                     onClick={() => {
                       setCollection([...collection, x])
@@ -110,6 +110,7 @@ const FrontPage = () => {
                   >
                     +
                   </button>
+                  <span>Add message to Collection</span>
                 </p>
               )
             return ''
@@ -119,18 +120,25 @@ const FrontPage = () => {
   }
   const Collection = () => {
     const string = new RegExp(search, 'i')
-
     const downloadText = () =>
       download(String(collection.join('\n')), 'collection.txt')
-    console.log('collection', collection)
+
     return (
-      <div>
-        {collection.map((x) => {
-          if (x.match(string)) return <p>{x}</p>
-          return ''
-        })}
-        <button onClick={() => downloadText()}>Download</button>
-      </div>
+      <>
+        <div
+          contenteditable='true'
+          onBlur={(e) => {
+            console.log(e.currentTarget.textContent)
+            setCollection([e.currentTarget.textContent])
+          }}
+        >
+          {collection.map((x) => {
+            if (x.match(string)) return <p>{x}</p>
+            return ''
+          })}
+        </div>
+        <button onMouseUp={() => downloadText()}>Download</button>
+      </>
     )
   }
   return (
