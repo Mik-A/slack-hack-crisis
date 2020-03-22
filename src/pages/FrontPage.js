@@ -160,16 +160,16 @@ const FrontPage = () => {
           &#8597;
         </button>
       </section>
-      <section className={`main-container ${toggleMain ? 'show' : 'hide'}`}>
+      <section className={`main-container`}>
         <article className={`main ${toggleMain ? 'show' : 'hide'}`}>
           <ShowChannels />
         </article>
+        <article className={`main `}>
+          {data.loading ? 'Loading...' : ''}
+          <p></p>
+          {data.collected ? <Collection /> : <View />}
+        </article>
       </section>
-      <article className='main' style={{ padding: 0 }}>
-        {data.loading ? 'Loading...' : ''}
-        <p></p>
-        {data.collected ? <Collection /> : <View />}
-      </article>
     </>
   )
 }

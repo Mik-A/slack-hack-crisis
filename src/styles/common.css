@@ -24,12 +24,7 @@ article {
   white-space: pre-wrap;
 }
 .hide {
-  transition: all 0.5s ease;
-  transform: translate(0, -100%);
-}
-.show {
-  transition: all 0.5s ease;
-  transform: translate(0, 0%);
+  display: none;
 }
 .grid-2-col {
   display: grid;
