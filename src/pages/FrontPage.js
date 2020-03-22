@@ -18,7 +18,7 @@ const FrontPage = () => {
   })
   const [search, setSearch] = useState('')
   const [collection, setCollection] = useState(['(Editable) Collection: '])
-
+  const [toggleMain, setToggleMain] = useState(true)
   const handleSearch = (e) => setSearch(e.target.value)
 
   useEffect(() => {
@@ -68,6 +68,7 @@ const FrontPage = () => {
       loading: true,
       listChannels: [...data.listChannels]
     })
+    setToggleMain(false)
     fetch('/.netlify/functions/' + api, {
       method: 'post',
       headers: {
@@ -151,12 +152,24 @@ const FrontPage = () => {
           onChange={handleSearch}
         />
       </div>
-      <article className='main'>
-        <ShowChannels />
-        {data.loading ? 'Loading...' : ''}
-        <p></p>
-        {data.collected ? <Collection /> : <View />}
-      </article>
+      <section className='fixed-right'>
+        <button
+          className='toggle-btn'
+          onClick={() => setToggleMain(!toggleMain)}
+        >
+          &#8597;
+        </button>
+      </section>
+      <section className='main-container'>
+        <article className={`main ${toggleMain ? 'show' : 'hide'}`}>
+          <ShowChannels />
+        </article>
+        <article className='main' style={{ padding: 0 }}>
+          {data.loading ? 'Loading...' : ''}
+          <p></p>
+          {data.collected ? <Collection /> : <View />}
+        </article>
+      </section>
     </>
   )
 }
