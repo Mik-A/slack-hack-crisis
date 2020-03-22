@@ -164,12 +164,12 @@ const FrontPage = () => {
         <article className={`main ${toggleMain ? 'show' : 'hide'}`}>
           <ShowChannels />
         </article>
-        <article className='main' style={{ padding: 0 }}>
-          {data.loading ? 'Loading...' : ''}
-          <p></p>
-          {data.collected ? <Collection /> : <View />}
-        </article>
       </section>
+      <article className='main' style={{ padding: 0 }}>
+        {data.loading ? 'Loading...' : ''}
+        <p></p>
+        {data.collected ? <Collection /> : <View />}
+      </article>
     </>
   )
 }
