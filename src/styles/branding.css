@@ -127,3 +127,17 @@ button.small-btn {
 button.small-btn + span {
   color: var(--color-white);
 }
+button.toggle-btn {
+  height: 36px;
+  width: 50px;
+  font-size: inherit;
+  font-weight: bold;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--color-brand-orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--color-brand-orange);
+  font-size: 1.1em;
+}
