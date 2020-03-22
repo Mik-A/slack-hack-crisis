@@ -160,7 +160,7 @@ const FrontPage = () => {
           &#8597;
         </button>
       </section>
-      <section className='main-container'>
+      <section className={`main-container ${toggleMain ? 'show' : 'hide'}`}>
         <article className={`main ${toggleMain ? 'show' : 'hide'}`}>
           <ShowChannels />
         </article>
