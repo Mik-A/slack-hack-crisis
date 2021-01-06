@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "@slack/web-api": "^5.8.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "eslint": "^6.8.0",
     "fs": "^0.0.1-security",
     "in-browser-download": "^2.0.0",
